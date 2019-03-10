@@ -7,7 +7,9 @@
   <body>
     top#index
 
-
+	<% form_tag { :controller => 'top', :action => 'test' } do %>
+	  <%= submit_tag("実行") %>
+	<% end %>
     <p>
 	本の値段は<%= @testname %>円です。
 	</p>
