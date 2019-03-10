@@ -3,7 +3,7 @@ class TopController < ApplicationController
 
   end
 
-  def test
+  def testbtn
     @testname = 'aaa'
   end
 
