@@ -1,7 +1,9 @@
 # coding: utf-8
 class TopController < ApplicationController
-  def index
 
+  @testname = 'aaa'
+  def index
+    @testname = 'aaaaaaa'
   end
 
   def testbtn
