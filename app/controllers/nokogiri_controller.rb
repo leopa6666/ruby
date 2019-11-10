@@ -3,12 +3,12 @@ class NokogiriController < ApplicationController
   require 'nokogiri'
   require 'open-uri'
   
-  url = 'https://qiita.com/search?q=ruby'
-  
-  charset = nil
-    
   def testsc
 
+    url = 'https://qiita.com/search?q=ruby'
+  
+    charset = nil
+    
     html = open(url) do |f|
       charset = f.charset
       f.read
