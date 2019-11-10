@@ -7,9 +7,6 @@ class TopController < ApplicationController
 
   @testname = 'aaa'
   def index
-  end
-
-  def testbtn
     #url = 'https://qiita.com/search?q=ruby'
     url = 'https://leopa.hatenablog.jp/'
       
@@ -36,6 +33,10 @@ class TopController < ApplicationController
       end 
     end
     send_data(csv_data, filename: "posts.csv")
+  end
+
+  def testbtn
+
   end
 
 end
