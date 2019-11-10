@@ -17,8 +17,8 @@ class TopController < ApplicationController
     end
 
     doc = Nokogiri::HTML.parse(html, nil, charset)
-    doc.xpath('//h1[@class="entry-inner"]').each do |node|
-      p node.css('a').inner_text
+    doc.xpath('//h1[@class="entry-content"]').each do |node|
+      p node.css('p').inner_text
     end 
   end
 
