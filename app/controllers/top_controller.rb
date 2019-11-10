@@ -6,7 +6,8 @@ class TopController < ApplicationController
 
   @testname = 'aaa'
   def index
-    url = 'https://qiita.com/search?q=ruby'
+    #url = 'https://qiita.com/search?q=ruby'
+    url = 'https://leopa.hatenablog.jp/'
   
     charset = nil
 
@@ -16,7 +17,7 @@ class TopController < ApplicationController
     end
 
     doc = Nokogiri::HTML.parse(html, nil, charset)
-    doc.xpath('//h1[@class="searchResult_itemTitle"]').each do |node|
+    doc.xpath('//h1[@class="entry-inner"]').each do |node|
       p node.css('a').inner_text
     end 
   end
