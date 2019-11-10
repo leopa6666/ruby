@@ -5,8 +5,20 @@ class TopController < ApplicationController
   require 'open-uri'
   require 'csv'
 
+
+  
   @testname = 'aaa'
   def index
+
+    respond_to do |format|
+      format.html
+      format.csv do |csv|
+        testbtn()
+      end
+    end
+  end
+
+  def testbtn
     #url = 'https://qiita.com/search?q=ruby'
     url = 'https://leopa.hatenablog.jp/'
       
@@ -33,12 +45,6 @@ class TopController < ApplicationController
       end 
     end
     send_data(csv_data, filename: "posts.csv")
-
-    return index
-  end
-
-  def testbtn
-
   end
 
 end
