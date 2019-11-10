@@ -7,9 +7,12 @@ class TopController < ApplicationController
 
   @testname = 'aaa'
   def index
+  end
+
+  def testbtn
     #url = 'https://qiita.com/search?q=ruby'
     url = 'https://leopa.hatenablog.jp/'
-  
+      
     charset = nil
 
     html = open(url) do |f|
@@ -23,7 +26,7 @@ class TopController < ApplicationController
     # CSVヘッダー
     headers = ['Body', 'Page URL']
 
-    CSV.open('target.csv', 'w') do |csv|
+    csv_data = CSV.generate do |csv|
       # 一行目はCSVヘッダーにする
       csv << headers
 
@@ -32,11 +35,7 @@ class TopController < ApplicationController
         p node.css('p').inner_text
       end 
     end
-
-  end
-
-  def testbtn
-    @testname = 'aaa'
+    send_data(csv_data, filename: "posts.csv")
   end
 
 end
