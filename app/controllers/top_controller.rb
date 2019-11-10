@@ -3,6 +3,7 @@ class TopController < ApplicationController
 
   require 'nokogiri'
   require 'open-uri'
+  require 'csv'
 
   @testname = 'aaa'
   def index
@@ -17,9 +18,21 @@ class TopController < ApplicationController
     end
 
     doc = Nokogiri::HTML.parse(html, nil, charset)
-    doc.xpath('//div[@class="entry-content"]').each do |node|
-      p node.css('p').inner_text
-    end 
+
+
+    # CSVヘッダー
+    headers = ['Body', 'Page URL']
+
+    CSV.open('target.csv', 'w') do |csv|
+      # 一行目はCSVヘッダーにする
+      csv << headers
+
+      doc.xpath('//div[@class="entry-content"]').each do |node|
+        csv << [node.css('p').inner_text, url]
+        p node.css('p').inner_text
+      end 
+    end
+
   end
 
   def testbtn
