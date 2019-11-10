@@ -33,6 +33,8 @@ class TopController < ApplicationController
       end 
     end
     send_data(csv_data, filename: "posts.csv")
+
+    return index
   end
 
   def testbtn
