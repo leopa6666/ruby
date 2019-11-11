@@ -47,6 +47,9 @@ class TopController < ApplicationController
 
         doc.xpath('//div[@class="frame_pro_contents_inner"]').each do |node|
           csv << [node.css('h1').inner_text, url]
+          #p node.css('p').inner_text
+        end 
+        doc.xpath('//div[@class="bodytext"]').each do |node|
           csv << [node.css('p').inner_text, url]
           #p node.css('p').inner_text
         end 
