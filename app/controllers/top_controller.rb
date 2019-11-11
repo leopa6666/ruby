@@ -30,11 +30,13 @@ class TopController < ApplicationController
 
     # CSVヘッダー
     headers = ['Body', 'Page URL']
+    user_agent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.63 Safari/537.36'
     csv_data = CSV.generate do |csv|
 
       urls.each  do |url|
         sleep(6)
-        html = open(url) do |f|
+        
+        html = open(url ,"User-Agent" => user_agent) do |f|
           charset = f.charset
           f.read
         end
