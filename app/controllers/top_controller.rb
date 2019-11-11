@@ -34,7 +34,7 @@ class TopController < ApplicationController
 
       urls.each  do |url|
         
-        html = open(url ,"User-Agent" => user_agent) do |f|
+        html = open(url ,'User-Agent' => user_agent) do |f|
           charset = f.charset
           f.read
         end
