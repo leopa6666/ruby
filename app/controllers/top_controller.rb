@@ -19,8 +19,13 @@ class TopController < ApplicationController
   end
 
   def testbtn
-    #url = 'https://qiita.com/search?q=ruby'
-    url = 'https://leopa.hatenablog.jp/'
+    #url = '  https://qiita.com/search?q=ruby'
+    #url = 'https://leopa.hatenablog.jp/'
+    urls = %w(
+      https://ma-japan.info/archives/15231	,
+      https://ma-japan.info/archives/17580	,
+      https://ma-japan.info/archives/17607	
+    )
       
     charset = nil
 
@@ -39,9 +44,10 @@ class TopController < ApplicationController
       # 一行目はCSVヘッダーにする
       csv << headers
 
-      doc.xpath('//div[@class="entry-content"]').each do |node|
+      doc.xpath('//article[@id="post-single"]').each do |node|
+        csv << [node.css('h1').inner_text, url]
         csv << [node.css('p').inner_text, url]
-        p node.css('p').inner_text
+        #p node.css('p').inner_text
       end 
     end
     send_data(csv_data, filename: "posts.csv")
