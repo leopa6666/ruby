@@ -150,7 +150,7 @@ class TopController < ApplicationController
     headers = ['title','Body', 'Page URL']
     user_agent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.63 Safari/537.36'
     csv_data = CSV.generate do |csv|
-
+    csv << headers
       urls.each  do |url|
         
         html = open(url ,'User-Agent' => user_agent) do |f|
@@ -162,7 +162,7 @@ class TopController < ApplicationController
 
         doc = Nokogiri::HTML.parse(html, nil, charset)
         # 一行目はCSVヘッダーにする
-        csv << headers
+
         titletext = ''
         doc.xpath('//div[@class="frame_pro_contents_inner"]').each do |node|
           titletext << node.css('h1').inner_text
