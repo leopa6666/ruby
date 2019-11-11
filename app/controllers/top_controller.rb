@@ -22,8 +22,7 @@ class TopController < ApplicationController
     #url = '  https://qiita.com/search?q=ruby'
     #url = 'https://leopa.hatenablog.jp/'
     urls = %w(
-      https://ma-japan.info/archives/17580	,
-      https://ma-japan.info/archives/17607	
+      https://mbp-japan.com/ishikawa/izumigaokakaikei/column/5023137/
     )
       
     charset = nil
@@ -34,7 +33,6 @@ class TopController < ApplicationController
     csv_data = CSV.generate do |csv|
 
       urls.each  do |url|
-        sleep(6)
         
         html = open(url ,"User-Agent" => user_agent) do |f|
           charset = f.charset
@@ -47,11 +45,12 @@ class TopController < ApplicationController
         # 一行目はCSVヘッダーにする
         csv << headers
 
-        doc.xpath('//article[@id="post-single"]').each do |node|
+        doc.xpath('//div[@class="frame_pro_contents_inner"]').each do |node|
           csv << [node.css('h1').inner_text, url]
           csv << [node.css('p').inner_text, url]
           #p node.css('p').inner_text
         end 
+        sleep(6)
       end
     end
     send_data(csv_data, filename: "posts.csv")
