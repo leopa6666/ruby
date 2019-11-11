@@ -26,8 +26,7 @@ class TopController < ApplicationController
       https://mbp-japan.com/ishikawa/izumigaokakaikei/column/5023420/ 
       https://mbp-japan.com/ishikawa/izumigaokakaikei/column/5023480/ 
       https://mbp-japan.com/ishikawa/izumigaokakaikei/column/5023633/ 
-      https://mbp-japan.com/ishikawa/izumigaokakaikei/column/5023822/ 
-      https://mbp-japan.com/ishikawa/izumigaokakaikei/column/5023991/ 
+      https://mbp-japan.com/ishikawa/izumigaokakaikei/column/5023822/
     )
       
     charset = nil
