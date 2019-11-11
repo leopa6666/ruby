@@ -22,7 +22,6 @@ class TopController < ApplicationController
     #url = '  https://qiita.com/search?q=ruby'
     #url = 'https://leopa.hatenablog.jp/'
     urls = %w(
-      https://ma-japan.info/archives/15231	,
       https://ma-japan.info/archives/17580	,
       https://ma-japan.info/archives/17607	
     )
@@ -39,7 +38,9 @@ class TopController < ApplicationController
           charset = f.charset
           f.read
         end
-    
+
+        p url
+
         doc = Nokogiri::HTML.parse(html, nil, charset)
         # 一行目はCSVヘッダーにする
         csv << headers
