@@ -22,7 +22,9 @@ class TopController < ApplicationController
     #url = '  https://qiita.com/search?q=ruby'
     #url = 'https://leopa.hatenablog.jp/'
     urls = %w(
-      https://mbp-japan.com/ishikawa/izumigaokakaikei/column/5023137/
+      https://mbp-japan.com/ishikawa/izumigaokakaikei/column/5023137/,
+      https://mbp-japan.com/ishikawa/izumigaokakaikei/column/5023420/
+
     )
       
     charset = nil
